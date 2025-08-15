@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Prediction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-6 text-center">🏠 House Price Prediction</h1>
+
+        <form action="/predict" method="POST" class="space-y-4">
+            <div>
+                <label class="block font-medium">Square Feet</label>
+                <input type="number" name="GrLivArea" required class="w-full p-2 border rounded">
+            </div>
+
+            <div>
+                <label class="block font-medium">Bedrooms</label>
+                <input type="number" name="BedroomAbvGr" required class="w-full p-2 border rounded">
+            </div>
+
+            <div>
+                <label class="block font-medium">Full Bathrooms</label>
+                <input type="number" name="FullBath" required class="w-full p-2 border rounded">
+            </div>
+
+            <div>
+                <label class="block font-medium">Half Bathrooms</label>
+                <input type="number" name="HalfBath" required class="w-full p-2 border rounded">
+            </div>
+
+            <div>
+                <label class="block font-medium">Total Rooms Above Ground</label>
+                <input type="number" name="TotRmsAbvGrd" required class="w-full p-2 border rounded">
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+                Predict Price
+            </button>
+        </form>
+
+        {% if prediction %}
+        <div class="mt-6 p-4 bg-green-100 border border-green-400 rounded">
+            <p class="text-lg font-semibold text-green-700">
+                <p>Predicted Price: {{ prediction }}</p>
+            </p>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
